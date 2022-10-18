@@ -4,9 +4,9 @@ import MainPage from "./MainPage/MainPage";
 
 function App() {
   return (
-    <div> 
+    <div>
       <Routes>
-        <Route path='/' element={<MainPage/> }/>
+        <Route path='/' element={<MainPage />} />
       </Routes>
     </div>
   );
