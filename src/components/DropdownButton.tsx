@@ -1,29 +1,20 @@
 import React, { useEffect } from 'react'
 import Dropdown from 'react-bootstrap/Dropdown';
-import { useAppDispatch } from '../hook/redux';
-import { IProduct } from '../models/models'
-import { fetchSmartphones } from '../store/actions/productActions';
 
 interface Devices {
-    setDevices: React.Dispatch<React.SetStateAction<IProduct[]>>
+    setCategory: React.Dispatch<React.SetStateAction<string>>
 }
 
-export default function DropdownButton(setDevices: Devices) {
-    const dispatch = useAppDispatch()
-
-    const smartphonesHandler = () => {
-        const data = dispatch(fetchSmartphones())
-        // setDevices(data)
-    }
+export default function DropdownButton({ setCategory }: Devices) {
 
     return (
-        <Dropdown>
+        <Dropdown >
             <Dropdown.Toggle variant="success" id="dropdown-basic">
                 Выбор устройств
             </Dropdown.Toggle>
             <Dropdown.Menu>
-                <Dropdown.Item onClick={smartphonesHandler}>Смартфоны</Dropdown.Item>
-                <Dropdown.Item>Планшеты</Dropdown.Item>
+                <Dropdown.Item onClick={() => setCategory('Smartphones')}>Смартфоны</Dropdown.Item>
+                <Dropdown.Item onClick={() => setCategory('Laptops')}>Планшеты</Dropdown.Item>
             </Dropdown.Menu>
         </Dropdown>
     );
