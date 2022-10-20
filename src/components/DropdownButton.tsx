@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Dropdown from 'react-bootstrap/Dropdown';
 
 interface Devices {
@@ -8,14 +8,16 @@ interface Devices {
 export default function DropdownButton({ setCategory }: Devices) {
 
     return (
-        <Dropdown >
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Выбор устройств
-            </Dropdown.Toggle>
-            <Dropdown.Menu>
-                <Dropdown.Item onClick={() => setCategory('Smartphones')}>Смартфоны</Dropdown.Item>
-                <Dropdown.Item onClick={() => setCategory('Laptops')}>Планшеты</Dropdown.Item>
-            </Dropdown.Menu>
-        </Dropdown>
+        <div className='justify-center flex pb-4'>
+            <Dropdown>
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    Change devices
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                    <Dropdown.Item onClick={() => setCategory('Smartphones')}>Smartphones</Dropdown.Item>
+                    <Dropdown.Item onClick={() => setCategory('Laptops')}>Laptops</Dropdown.Item>
+                </Dropdown.Menu>
+            </Dropdown>
+        </div>
     );
 }

@@ -1,7 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import { useAppDispatch, useAppSelector } from '../hook/redux';
 import { IProduct } from '../models/models'
 
 interface ProductCardProps {
@@ -14,13 +13,21 @@ export default function Highchart({ category, products }: ProductCardProps, prop
     const smart = products.filter(el => el.category === 'smartphones')
     const lap = products.filter(el => el.category === 'laptops')
     const cat = category === 'Smartphones' ? smart : lap
-    console.log(cat, 'cat');
-    console.log(smart, "smart");
 
 
     const options: Highcharts.Options = {
-        xAxis: {
+        xAxis: [{
             categories: cat.map(el => el.title),
+        },
+        {
+            title: {
+                text: 'Models'
+            }
+        }],
+        yAxis: {
+            title: {
+                text: 'Rating'
+            }
         },
         title: {
             text: category,

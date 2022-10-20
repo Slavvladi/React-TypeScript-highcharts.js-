@@ -12,7 +12,6 @@ export const fetchProducts = () => {
             const smart = response.data.products.filter(el => el.category === "smartphones")
             const lap = response.data.products.filter(el => el.category === "laptops")
             const smartLap = smart.concat(lap)
-            console.log(smartLap, "smartLap");
             dispatch(productSlice.actions.fetchSuccess(
                 smartLap
             ))
